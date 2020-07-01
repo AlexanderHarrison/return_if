@@ -7,6 +7,6 @@ license-file = "LICENSE"
 description = "A set of macros for returns and breaks in the None and Err cases."
 homepage = "https://crates.io/crates/return_if"
 repository = "https://github.com/AlexanderHarrison/return_if"
-readme = "readme.md"
+readme = "README.md"
 keywords = ["macro", "no-std", "option", "result", "unwrap"]
 categories = ["rust-patterns", "no-std"]
