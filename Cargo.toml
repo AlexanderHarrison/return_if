@@ -1,12 +1,12 @@
 [package]
-name = "return_if"
+name = "unwrap_return"
 version = "0.1.0"
 authors = ["Alexander Harrison <alexander.harrison.r@gmail.com>"]
 edition = "2018"
 license-file = "LICENSE"
 description = "A set of macros for returns and breaks in the None and Err cases."
-homepage = "https://crates.io/crates/return_if"
-repository = "https://github.com/AlexanderHarrison/return_if"
+homepage = "https://crates.io/crates/unwrap_return"
+repository = "https://github.com/AlexanderHarrison/unwrap_return"
 readme = "README.md"
 keywords = ["macro", "no-std", "option", "result", "unwrap"]
 categories = ["rust-patterns", "no-std"]

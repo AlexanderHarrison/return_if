@@ -8,5 +8,5 @@ match expression {
 ```
 with simpler macros such as
 ```
-return_if_none!(expression)
+unwrap_return!(expression)
 ```

@@ -1,6 +1,6 @@
 /// Unwraps in the ```Some``` case; returns in the ```None``` case.
 ///```
-/// return_if_none!(expression)
+/// unwrap_return!(expression)
 ///```
 /// is shorthand for
 ///```
@@ -10,7 +10,7 @@
 /// }
 /// ```
 #[macro_export]
-macro_rules! return_if_none {
+macro_rules! unwrap_return {
     ($e:expr) => {
         match { $e } {
             Some(ret) => ret,
@@ -21,7 +21,7 @@ macro_rules! return_if_none {
 
 /// Unwraps in the ```Some``` case; breaks in the ```None``` case.
 ///```
-/// break_if_none!(expression)
+/// unwrap_break!(expression)
 ///```
 /// is shorthand for
 ///```
@@ -31,7 +31,7 @@ macro_rules! return_if_none {
 /// }
 /// ```
 #[macro_export]
-macro_rules! break_if_none {
+macro_rules! unwrap_break {
     ($e:expr) => {
         match { $e } {
             Some(ret) => ret,
@@ -40,57 +40,13 @@ macro_rules! break_if_none {
     };
 }
 
-/// Unwraps in the ```Ok``` case; returns in the ```Err``` case.
-/// Discards anything contained within Err.
-///```
-/// return_if_err!(expression)
-///```
-/// is shorthand for
-///```
-/// match expression {
-///     Ok(ret) => ret,
-///     Err(_) => return
-/// }
-/// ```
-#[macro_export]
-macro_rules! return_if_err {
-    ($e:expr) => {
-        match { $e } {
-            Ok(ret) => ret,
-            Err(_) => return,
-        }
-    };
-}
-
-/// Unwraps in the ```Ok``` case; breaks in the ```Err``` case.
-/// Discards anything contained within Err.
-///```
-/// break_if_err!(expression)
-///```
-/// is shorthand for
-///```
-/// match expression {
-///     Ok(ret) => ret,
-///     Err(_) => break
-/// }
-/// ```
-#[macro_export]
-macro_rules! break_if_err {
-    ($e:expr) => {
-        match { $e } {
-            Ok(ret) => ret,
-            Err(_) => break,
-        }
-    };
-}
-
-/// Unwraps in the ```Ok``` case; does something in the ```None``` case.
+/// Unwraps in the ```Some``` case; does something in the ```None``` case.
 ///
 /// Usually you want ```unwrap_or_else``` from the standard library. Use this for cases where 
 /// you need to do something simple before returning or breaking.
 ///
 ///```
-/// do_if_none!(expression, do)
+/// unwrap_do!(expression, do)
 ///```
 /// is shorthand for
 ///```
@@ -102,7 +58,7 @@ macro_rules! break_if_err {
 /// }
 /// ```
 #[macro_export]
-macro_rules! do_if_none {
+macro_rules! unwrap_do {
     ($e:expr, $d:expr) => {
         match { $e } {
             Some(ret) => ret,
@@ -111,26 +67,76 @@ macro_rules! do_if_none {
     };
 }
 
+/// Unwraps in the ```Ok``` case; returns in the ```Err``` case.
+///
+/// Drops everything contained within Err.
+///
+///```
+/// ok_unwrap_return!(expression)
+///```
+/// is shorthand for
+///```
+/// match expression {
+///     Ok(ret) => ret,
+///     Err(_) => return
+/// }
+/// ```
+#[macro_export]
+macro_rules! ok_unwrap_return {
+    ($e:expr) => {
+        match { $e } {
+            Ok(ret) => ret,
+            Err(_) => return,
+        }
+    };
+}
+
+/// Unwraps in the ```Ok``` case; breaks in the ```Result``` case.
+///
+/// Drops everything contained within Err.
+///
+///```
+/// ok_unwrap_break!(expression)
+///```
+/// is shorthand for
+///```
+/// match expression {
+///     Ok(ret) => ret,
+///     Err(_) => break
+/// }
+/// ```
+#[macro_export]
+macro_rules! ok_unwrap_break {
+    ($e:expr) => {
+        match { $e } {
+            Ok(ret) => ret,
+            Err(_) => break,
+        }
+    };
+}
+
 /// Unwraps in the ```Ok``` case; does something in the ```Err``` case.
-/// Discards anything contained within Err.
+///
+/// Drops everything contained within Err.
+///
 ///
 /// Usually you want ```unwrap_or_else``` from the standard library. Use this for cases where 
 /// you need to do something simple before returning or breaking.
 ///
 ///```
-/// do_if_err!(expression, do)
+/// ok_unwrap_do!(expression, do)
 ///```
 /// is shorthand for
 ///```
 /// match expression {
 ///     Ok(ret) => ret,
 ///     Err(_) => {
-///         do_if_err
+///         do
 ///     }
 /// }
 /// ```
 #[macro_export]
-macro_rules! do_if_err {
+macro_rules! ok_unwrap_do {
     ($e:expr, $d:expr) => {
         match { $e } {
             Ok(ret) => ret,
