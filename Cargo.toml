@@ -1,6 +1,6 @@
 [package]
 name = "unwrap_return"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Alexander Harrison <alexander.harrison.r@gmail.com>"]
 edition = "2018"
 license-file = "LICENSE"
