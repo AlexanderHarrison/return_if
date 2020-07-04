@@ -43,7 +43,8 @@ macro_rules! unwrap_break {
 /// Unwraps in the ```Some``` case; does something in the ```None``` case.
 ///
 /// Usually you want ```unwrap_or_else``` from the standard library. Use this for cases where 
-/// you need to do something simple before returning or breaking.
+/// you need to do something simple before returning or breaking, or you want to return a value 
+/// other than ().
 ///
 ///```
 /// unwrap_do!(expression, do)
@@ -119,9 +120,9 @@ macro_rules! ok_unwrap_break {
 ///
 /// Drops everything contained within Err.
 ///
-///
 /// Usually you want ```unwrap_or_else``` from the standard library. Use this for cases where 
-/// you need to do something simple before returning or breaking.
+/// you need to do something simple before returning or breaking, or you want to return a value 
+/// other than ().
 ///
 ///```
 /// ok_unwrap_do!(expression, do)
